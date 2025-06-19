@@ -1,9 +1,9 @@
 import axios from 'axios';
-
+const url = "https://disastermanagement-bzga.onrender.com"
 function DisasterList({ disasters, onSelect, onEdit, onDelete, userId }) {
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/disasters/${id}`, {
+      await axios.delete(`${url}/disasters/${id}`, {
         headers: { 'x-user-id': userId },
       });
       onDelete();

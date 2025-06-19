@@ -5,13 +5,14 @@ import axios from 'axios';
 function ReportForm({ disasterId, userId }) {
   const [formData, setFormData] = useState({ content: '', image_url: '' });
   const [error, setError] = useState('');
+  const url = "https://disastermanagement-bzga.onrender.com"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     try {
       await axios.post(
-        `http://localhost:5000/disasters/${disasterId}/reports`,
+        `${url}/disasters/${disasterId}/reports`,
         formData,
         { headers: { 'x-user-id': userId } }
       );

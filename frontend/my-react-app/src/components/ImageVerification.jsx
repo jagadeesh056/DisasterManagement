@@ -6,6 +6,7 @@ function ImageVerification({ disasterId }) {
   const [imageUrl, setImageUrl] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
+  const url = "https://disastermanagement-bzga.onrender.com"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +14,7 @@ function ImageVerification({ disasterId }) {
     setResult('');
     try {
       const res = await axios.post(
-        `http://localhost:5000/disasters/${disasterId}/verify-image`,
+        `${url}/disasters/${disasterId}/verify-image`,
         { image_url: imageUrl },
       );
       setResult(res.data);

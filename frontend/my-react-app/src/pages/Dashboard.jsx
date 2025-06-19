@@ -19,9 +19,11 @@ function Dashboard() {
   const [resources, setResources] = useState([]);
   const [updates, setUpdates] = useState([]);
   const [reports, setReports] = useState([]);
+  const url = "https://disastermanagement-bzga.onrender.com"
 
   useEffect(() => {
     fetchDisasters();
+
 
     socket.on('disaster_updated', (data) => {
       if (data.deleted) {
@@ -63,21 +65,22 @@ function Dashboard() {
 
   const fetchDisasters = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/disasters');
+      const res = await axios.get(`${url}/disasters`);
       setDisasters(res.data);
     } catch (err) {
       console.error('Error fetching disasters:', err);
     }
   };
 
+
   const fetchDisasterDetails = async (disaster) => {
     try {
       const [socialRes, resourcesRes, updatesRes, reportsRes] = await Promise.all([
        Promise.all([
-        axios.get(`http://localhost:5000/disasters/${disaster.id}/social-media`),
-        axios.get(`http://localhost:5000/disasters/${disaster.id}/resources?lat=40.7128&lon=${encodeURIComponent('-74.0060')}`),
-        axios.get(`http://localhost:5000/disasters/${disaster.id}/official-updates`),
-        axios.get(`http://localhost:5000/disasters/${disaster.id}/reports`)
+        axios.get(`${url}/disasters/${disaster.id}/social-media`),
+        axios.get(`${url}/disasters/${disaster.id}/resources?lat=40.7128&lon=${encodeURIComponent('-74.0060')}`),
+        axios.get(`${url}/disasters/${disaster.id}/official-updates`),
+        axios.get(`${url}/disasters/${disaster.id}/reports`)
       ])])
 
       setSocialMedia(socialRes.data);

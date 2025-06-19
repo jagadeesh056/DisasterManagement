@@ -10,6 +10,8 @@ function DisasterForm({ userId, onSuccess, disaster = null, onCancel }) {
   });
   const [error, setError] = useState('');
 
+  const url = "https://disastermanagement-bzga.onrender.com"
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -20,13 +22,13 @@ function DisasterForm({ userId, onSuccess, disaster = null, onCancel }) {
       };
       if (disaster) {
         await axios.put(
-          `http://localhost:5000/disasters/${disaster.id}`,
+          `${url}/disasters/${disaster.id}`,
           data,
           { headers: { 'x-user-id': userId } }
         );
       } else {
         await axios.post(
-          'http://localhost:5000/disasters',
+          `${url}/disasters`,
           data,
           { headers: { 'x-user-id': userId } }
         );
