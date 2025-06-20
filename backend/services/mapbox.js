@@ -25,7 +25,7 @@ async function geocodeLocation(locationName) {
     return result;
   } catch (error) {
     logger.error(`Mapbox geocoding failed for ${locationName}: ${error.message}`);
-    throw error; // Let the caller handle the error
+    throw error;
   }
 }
 

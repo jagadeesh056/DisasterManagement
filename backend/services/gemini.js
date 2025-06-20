@@ -21,8 +21,6 @@ async function getLocationFromText(text) {
 }
 
 const verifyImage = async (image_url) => {
-  // Mock Gemini API call
-  // In production, implement actual image verification with Gemini
   logger.info(`Mock verifying image: ${image_url}`);
   return { status: 'verified', confidence: 0.9 };
 };

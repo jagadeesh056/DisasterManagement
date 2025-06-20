@@ -4,7 +4,6 @@ const { logger } = require('../services/logger');
 
 const router = express.Router();
 
-// Mock Twitter API
 const mockSocialMedia = [
   { post: '#floodrelief Need food in NYC', user: 'citizen1', created_at: new Date().toISOString() },
   { post: 'Shelter available in Lower East Side #floodrelief', user: 'reliefOrg', created_at: new Date().toISOString() },
@@ -20,7 +19,6 @@ router.get('/:id/social-media', async (req, res) => {
     return res.json(cached);
   }
 
-  // Mock Twitter API response
   const data = mockSocialMedia;
   await setCachedData(cacheKey, data, 3600);
   logger.info(`Fetched social media for disaster: ${id}`);
