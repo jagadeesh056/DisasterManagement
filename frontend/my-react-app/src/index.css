@@ -101,9 +101,10 @@ a {
   .feed-post {
     @apply bg-gray-700 hover:bg-gray-600;
   }
-  input, textarea {
-    @apply border-gray-600 text-gray-100;
-  }
+input,textarea {
+  @apply border-gray-100 text-black;
+}
+
   button {
     @apply bg-blue-400 hover:bg-blue-300;
   }
